@@ -1,0 +1,31 @@
+# Docs - http://rptl.io/configtxt
+
+arm_64bit=1
+arm_boost=1
+camera_auto_detect=0
+display_auto_detect=0
+max_framebuffers=2
+
+dtparam=i2c_arm=on
+dtparam=spi=on
+enable_uart=1
+
+framebuffer_width=480
+framebuffer_height=320
+
+dtoverlay=waveshare35a:rotate=90
+hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_mode=1
+hdmi_mode=87
+hdmi_cvt 480 320 30 6 0 0 0
+hdmi_drive=2
+display_rotate=0
+
+# Audio (Mono PWM on GPIO13)
+dtparam=audio=on
+dtoverlay=audremap,pins_13
+
+#dtoverlay=disable-wifi
+#dtoverlay=disable-bt
+
