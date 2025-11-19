@@ -1,1 +1,0 @@
-console=tty1 quiet loglevel=3 vt.global_cursor_default=0 fbcon=map:10 cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes fbcon=font:ProFont6x11
