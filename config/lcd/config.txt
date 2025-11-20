@@ -1,5 +1,9 @@
 # Docs - http://rptl.io/configtxt
 
+# Boot optimizations
+boot_delay=0
+#disable_splash=1
+
 arm_64bit=1
 arm_boost=1
 camera_auto_detect=0
@@ -9,7 +13,7 @@ dtparam=spi=on
 enable_uart=1
 
 dtoverlay=vc4-kms-v3d,nohdmi
-max_framebuffers=2
+maxframebuffers=2
 
 framebuffer_width=480
 framebuffer_height=320
