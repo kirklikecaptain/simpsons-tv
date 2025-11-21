@@ -1,6 +1,7 @@
 # Docs - http://rptl.io/configtxt
 
 # Boot optimizations
+initial_turbo=60
 boot_delay=0
 #disable_splash=1
 
