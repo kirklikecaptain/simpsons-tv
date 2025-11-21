@@ -3,6 +3,7 @@
 # Boot optimizations
 boot_delay=0
 #disable_splash=1
+hdmi_blanking=2
 
 arm_64bit=1
 arm_boost=1

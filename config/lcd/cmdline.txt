@@ -1,1 +1,1 @@
-console=tty3 quiet loglevel=0 vt.global_cursor_default=0 fbcon=map:10 splash plymouth.ignore-serial-consoles cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes
+console=tty2 loglevel=3 vt.global_cursor_default=0 fbcon=map:10 cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes
