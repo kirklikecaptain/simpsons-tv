@@ -1,1 +1,0 @@
-console=tty2 loglevel=3 vt.global_cursor_default=0 fbcon=map:10 cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes

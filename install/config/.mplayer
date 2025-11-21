@@ -1,0 +1,19 @@
+# Video player config ~/.mplayer/config
+
+# Video output to LCD framebuffer
+vo=fbdev2:/dev/fb0
+fs=yes
+quiet=yes
+
+# Force resolution to 480x320 with crop
+vf=scale=480:320,crop=480:320
+zoom=yes
+
+# Limit to 30fps
+fps=30
+framedrop=yes
+
+# Mono audio (downmix to 1 channel)
+af=pan=1:0.5:0.5
+channels=1
+

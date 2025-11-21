@@ -1,0 +1,1 @@
+console=tty2 loglevel=0 quiet splash fbcon=map:10 fastboot cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes
