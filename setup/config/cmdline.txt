@@ -1,0 +1,1 @@
+console=tty3 loglevel=0 fastboot quiet splash fbcon=map:10 plymouth.ignore-serial-consoles cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes

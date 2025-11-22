@@ -3,17 +3,19 @@
 # Boot optimizations
 initial_turbo=60
 boot_delay=0
-#disable_splash=1
+disable_overscan=1
+avoid_warnings=1
 
 arm_64bit=1
 arm_boost=1
 camera_auto_detect=0
-#display_auto_detect=0
+display_auto_detect=0
 dtparam=i2c_arm=on
 dtparam=spi=on
 enable_uart=1
 
-max_framebuffers=2
+max_framebuffers=1
+dtoverlay=vc4-kms-v3d,nohdmi
 
 framebuffer_width=480
 framebuffer_height=320
@@ -24,12 +26,3 @@ dtoverlay=waveshare35a:rotate=90
 # Audio (Mono PWM on GPIO13)
 dtparam=audio=on
 dtoverlay=audremap,pins_13
-
-# HDMI configuration for fb1
-hdmi_blanking=2
-hdmi_group=2
-hdmi_mode=82
-hdmi_drive=2
-
-# Load HDMI driver = fb1
-dtoverlay=vc4-kms-v3d
