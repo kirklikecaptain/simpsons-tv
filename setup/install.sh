@@ -133,6 +133,13 @@ sudo cp -f config/cmdline.txt /boot/firmware/cmdline.txt 2>> "$ERROR_LOG" || { l
 backup_file "/etc/default/console-setup" "etc/default/console-setup"
 sudo cp -f config/console-setup /etc/default/console-setup 2>> "$ERROR_LOG" || { log_error "Failed to copy console-setup"; ((failed_configs++)); }
 
+backup_file "$HOME/.bash_aliases" "home/.bash_aliases"
+sudo cp -f config/.bash_aliases ~/.bash_aliases 2>> "$ERROR_LOG" || { log_error "Failed to copy .bash_aliases"; ((failed_configs++)); }
+
+backup_file "/etc/motd" "etc/motd"
+sudo cp -f config/motd /etc/motd 2>> "$ERROR_LOG" || { log_error "Failed to copy motd"; ((failed_configs++)); }
+
+
 backup_file "$HOME/.mplayer/config" "home/.mplayer/config"
 mkdir -p ~/.mplayer
 sudo cp -f config/.mplayer ~/.mplayer/config 2>> "$ERROR_LOG" || { log_error "Failed to copy .mplayer config"; ((failed_configs++)); }

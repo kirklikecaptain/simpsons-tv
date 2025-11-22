@@ -90,6 +90,7 @@ sudo cp -f config/cmdline.txt /boot/firmware/cmdline.txt 2>> "$ERROR_LOG" || { l
 sudo cp -f config/console-setup /etc/default/console-setup 2>> "$ERROR_LOG" || { log_error "Failed to copy console-setup"; ((failed_configs++)); }
 sudo cp -f config/.mplayer ~/.mplayer 2>> "$ERROR_LOG" || { log_error "Failed to copy .mplayer config"; ((failed_configs++)); }
 sudo cp -f config/.bash_aliases ~/.bash_aliases 2>> "$ERROR_LOG" || { log_error "Failed to copy .bash_aliases"; ((failed_configs++)); }
+sudo cp -f config/motd /etc/motd 2>> "$ERROR_LOG" || { log_error "Failed to copy motd"; ((failed_configs++)); }
 
 if [ $failed_configs -eq 0 ]; then
     log_success "System configuration files installed"
