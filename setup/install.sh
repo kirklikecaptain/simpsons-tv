@@ -6,9 +6,10 @@ set +e
 
 # Setup logging and backup directory
 SCRIPT_DIR="$(dirname "$0")"
-LOG_FILE="$SCRIPT_DIR/install_$(date +%Y%m%d_%H%M%S).log"
-ERROR_LOG="$SCRIPT_DIR/install_errors_$(date +%Y%m%d_%H%M%S).log"
-BACKUP_DIR="$SCRIPT_DIR/backups_$(date +%Y%m%d_%H%M%S)"
+BACKUP_BASE="$SCRIPT_DIR/backups"
+BACKUP_DIR="$BACKUP_BASE/backup_$(date +%Y%m%d_%H%M%S)"
+LOG_FILE="$BACKUP_DIR/install.log"
+ERROR_LOG="$BACKUP_DIR/install_errors.log"
 CRITICAL_ERROR=0
 
 # Create backup directory
@@ -139,7 +140,6 @@ sudo cp -f config/.bash_aliases ~/.bash_aliases 2>> "$ERROR_LOG" || { log_error 
 backup_file "/etc/motd" "etc/motd"
 sudo cp -f config/motd /etc/motd 2>> "$ERROR_LOG" || { log_error "Failed to copy motd"; ((failed_configs++)); }
 
-
 backup_file "$HOME/.mplayer/config" "home/.mplayer/config"
 mkdir -p ~/.mplayer
 sudo cp -f config/.mplayer ~/.mplayer/config 2>> "$ERROR_LOG" || { log_error "Failed to copy .mplayer config"; ((failed_configs++)); }
@@ -194,8 +194,8 @@ echo ""
 echo "============================================"
 echo "Installation complete!"
 echo "============================================"
-echo "Log file: $LOG_FILE"
 echo "Backup directory: $BACKUP_DIR"
+echo "Log file: $LOG_FILE"
 if [ -f "$ERROR_LOG" ]; then
     echo "Error log: $ERROR_LOG"
     echo "Note: Some non-critical errors occurred (see error log)"

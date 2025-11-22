@@ -22,6 +22,8 @@ framebuffer_height=320
 
 # Load LCD overlay = fb0
 dtoverlay=waveshare35a:rotate=90
+#dtoverlay=piscreen,speed=18000000,drm
+#dtoverlay=mhs35:rotate=90
 
 # Audio (Mono PWM on GPIO13)
 dtparam=audio=on
