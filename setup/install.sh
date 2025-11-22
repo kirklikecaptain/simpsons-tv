@@ -159,19 +159,10 @@ else
     log_error "Failed to install utilities (non-critical)"
 fi
 
-log "Disabling unnecessary services..."
-sudo systemctl disable ModemManager.service >> "$LOG_FILE" 2>&1 || log_error "Failed to disable ModemManager (non-critical)"
-sudo systemctl disable keyboard-setup.service >> "$LOG_FILE" 2>&1 || log_error "Failed to disable keyboard-setup (non-critical)"
-log_success "Unnecessary services processing complete"
-
 log "Configuring TTY1..."
 backup_file "/etc/systemd/system/getty@tty1.service.d/override.conf" "etc/systemd/system/getty@tty1.service.d/override.conf"
 if sudo mkdir -p /etc/systemd/system/getty@tty1.service.d 2>> "$ERROR_LOG" && \
-   sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null << 'EOF'
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty %I $TERM
-EOF
+   sudo cp -f services/getty@tty1.service.d/override.conf /etc/systemd/system/getty@tty1.service.d/override.conf 2>> "$ERROR_LOG"
 then
     log_success "TTY1 configured"
 else
@@ -181,11 +172,7 @@ fi
 log "Configuring TTY2 for interactive access..."
 backup_file "/etc/systemd/system/getty@tty2.service.d/override.conf" "etc/systemd/system/getty@tty2.service.d/override.conf"
 if sudo mkdir -p /etc/systemd/system/getty@tty2.service.d 2>> "$ERROR_LOG" && \
-   sudo tee /etc/systemd/system/getty@tty2.service.d/override.conf > /dev/null << 'EOF'
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --autologin pi --noissue --skip-login %I $TERM
-EOF
+   sudo cp -f services/getty@tty2.service.d/override.conf /etc/systemd/system/getty@tty2.service.d/override.conf 2>> "$ERROR_LOG"
 then
     log_success "TTY2 configured"
 else
