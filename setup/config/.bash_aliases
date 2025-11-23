@@ -1,2 +1,5 @@
-alias edit-config='sudo nano /boot/firmware/config.txt'
-alias edit-cmdline='sudo nano /boot/firmware/cmdline.txt'
+alias config-txt='sudo nano /boot/firmware/config.txt'
+alias cmdline-txt='sudo nano /boot/firmware/cmdline.txt'
+alias tty1-config='sudo systemctl edit getty@tty1.service'
+alias tty2-config='sudo systemctl edit getty@tty2.service'
+alias tty-reload='sudo systemctl daemon-reload && sudo systemctl restart getty@tty1.service getty@tty2.service'

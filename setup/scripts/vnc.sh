@@ -58,7 +58,7 @@ systemctl --user enable vncserver.service
 systemctl --user start vncserver.service
 
 # Add aliases for management
-cat >> ~/.bashrc << 'EOF'
+cat >> ~/.bash_aliases << 'EOF'
 
 # VNC aliases
 alias vnc-status='systemctl --user status vncserver.service'
