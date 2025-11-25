@@ -1,5 +1,10 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# if [ "$(fgconsole 2>/dev/null)" != "1" ]; then
+#     sudo chvt 1
+# fi
+
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -7,14 +12,14 @@ case $- in
 esac
 
 # Clear screen on local TTY sessions only
-if [ -z "$SSH_CONNECTION" ] && [ -z "$SSH_CLIENT" ]; then
-    clear
-fi
+# if [ -z "$SSH_CONNECTION" ] && [ -z "$SSH_CLIENT" ]; then
+#     clear
+# fi
 
 # Enable blinking cursor on tty2-6, keep hidden on tty1
-case $(tty) in
-    /dev/tty[2-6]) setterm -cursor on -blink on ;;
-esac
+# case $(tty) in
+#     /dev/tty[2-6]) setterm -cursor on -blink on ;;
+# esac
 
 # History settings
 HISTCONTROL=ignoreboth

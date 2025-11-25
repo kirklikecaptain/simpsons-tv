@@ -1,4 +1,4 @@
-# Video player config ~/.mplayer/config
+# ~/.mplayer/config
 
 # Video output to LCD framebuffer
 vo=fbdev2:/dev/fb0
@@ -16,4 +16,3 @@ framedrop=yes
 # Mono audio (downmix to 1 channel)
 af=pan=1:0.5:0.5
 channels=1
-

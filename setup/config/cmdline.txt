@@ -1,1 +1,1 @@
-console=tty2 vt.global_cursor_default=0 loglevel=0 fastboot fbcon=map:10 cloud-init=disabled rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes
+console=tty1 fbcon=map:0 vt.global_cursor_default=0 rootwait root=/dev/mmcblk0p2 rootfstype=ext4 fsck.repair=yes
