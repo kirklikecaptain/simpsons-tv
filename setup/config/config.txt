@@ -3,6 +3,7 @@
 # Boot optimizations
 initial_turbo=60
 boot_delay=0
+disable_splash=1
 #disable_overscan=1
 #avoid_warnings=1
 
@@ -14,6 +15,7 @@ dtparam=i2c_arm=on
 dtparam=spi=on
 enable_uart=1
 
+hdmi_ignore_hotplug=1
 dtoverlay=vc4-kms-v3d,nohdmi
 disable_fw_kms_setup=1
 max_framebuffers=1

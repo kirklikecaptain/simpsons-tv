@@ -31,11 +31,40 @@ sudo cp -rf config/console-setup /etc/default/console-setup
 
 sudo touch /etc/cloud/cloud-init.disabled
 sudo systemctl disable --now ModemManager
+sudo systemctl disable NetworkManager-wait-online.service
 
 echo "Setting up SMB share for media folder..."
 sudo cp -rf config/smb.conf /etc/samba/smb.conf
 sudo systemctl enable smbd
 sudo systemctl restart smbd
+
+sudo systemctl disable apt-daily.timer apt-daily-upgrade.timer
+sudo systemctl stop apt-daily.timer apt-daily-upgrade.timer
+
+sudo systemctl disable NetworkManager.service
+sudo systemctl stop NetworkManager.service
+
+sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+
+network={
+    ssid="RamboNet_Home"
+    psk="J@3uEA2U9K2GjG.ReaT6"
+}
+
+network={
+    ssid="AlecsMove"
+    psk="951201main"
+}
+```
+sudo chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
+
 
 # sudo apt install imagemagick
 # convert image.png -colors 224 -depth 8 -type TrueColor -alpha off -compress none -define tga:bits-per-sample=8 splash-image.tga

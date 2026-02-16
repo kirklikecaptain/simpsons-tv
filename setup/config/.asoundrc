@@ -1,0 +1,7 @@
+pcm.!default {
+  type plug
+  slave {
+    pcm "hw:0,0"
+    rate 44100
+  }
+}
