@@ -1,13 +1,19 @@
-.PHONY: sync run dev watch
+PI ?= kirk
+USERNAME = pi
+APP_DIR ?= ~/simpsons-tv
+HOSTNAME ?= $(PI)s-pi-tv.local
+DEVICE ?= $(USERNAME)@$(HOSTNAME)
+DESTINATION = $(DEVICE):$(APP_DIR)
+
+.PHONY: sync sync-media init-pi
+
+init-pi:
+	ssh $(DEVICE) "mkdir -p $(APP_DIR)"
+	$(MAKE) sync
+	ssh -t $(DEVICE) "bash $(APP_DIR)/pi/init.sh"
 
 sync:
-	./sync_to_pi.sh
+	rsync -rltvz --filter=':- .gitignore' --exclude='.git/' ./ $(DESTINATION)
 
-run:
-	ssh pi@raspberrypi.local "cd ~/simpsons-tv && sudo python3 -m app"
-
-dev:
-	source .venv/bin/activate && python -m app
-
-watch:
-	source .venv/bin/activate && watchmedo auto-restart --patterns="*.py" --recursive --directory=./app --ignore-patterns="*__pycache__*" --signal SIGTERM -- python -m app
+sync-media:
+	rsync -rltvz ./media/ $(DESTINATION)/media/

@@ -1,0 +1,28 @@
+# http://rptl.io/configtxt
+
+# Boot optimizations
+initial_turbo=60
+boot_delay=0
+force_turbo=1
+arm_boost=1
+
+# Enable SPI interface for LCD
+dtparam=spi=on
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+# Audio (Mono PWM on GPIO13)
+dtoverlay=audremap,pins_13
+
+# Load LCD overlay
+dtoverlay=mhs35:rotate=270
+
+# Hardware watchdog (reboots Pi on freeze)
+#dtparam=watchdog=on
+
+# TODO: Safe shutdown circuit
+#dtparam=act_led_gpio=
+
+# TODO: Verify removal
+# enable_uart=1
